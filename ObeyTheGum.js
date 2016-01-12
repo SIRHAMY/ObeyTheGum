@@ -1,5 +1,7 @@
 "use strict";
 
+//**P5-built Function Code**
+
 var obeyFace
 var fr = 30;
 var timeAllot = 4;
@@ -73,6 +75,13 @@ function draw() {
   counter++;
 }
 
+//This function is called whenever the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+//**Bubble Code**
+
 var drawBubble = function(counter, duration) {
   var maxSize = windowHeight/2;
   var bubbleSize = maxSize * Math.pow((counter/duration), .6);
@@ -80,10 +89,6 @@ var drawBubble = function(counter, duration) {
   //drawShine(bubbleSize);
   
   ellipse(windowWidth/2, windowHeight/2, 1.5*bubbleSize, bubbleSize);
-}
-
-var drawSpiral = function(counter, duration) {
-  
 }
 
 /*
@@ -151,6 +156,14 @@ var popBubble = function() {
   //drawTeardrop(originX - xOffset, originY, teardropHeight);
 }
 
+//**Spiral Code**
+
+var drawSpiral = function(counter, duration) {
+  
+}
+
+//**Helper Code**
+
 /*
 pt1 - Origin point
 pt2 - destination point
@@ -168,10 +181,4 @@ var interpolateOnLine = function(pt1, pt2, counter, duration) {
   var result = new Pt(pt1.x + xChange, pt1.y + yChange);
   
   return result;
-}
-
-//This function is called whenever the window is resized
-function windowResized() {
-  //obeyFace.resize((windowHeight/obeyFace.height) * obeyFace.width, windowHeight);
-  resizeCanvas(windowWidth, windowHeight);
 }
