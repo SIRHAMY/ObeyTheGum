@@ -2,6 +2,8 @@
 
 Code for a P5.js sketch I'm making. Images aren't mine, so I didn't include them in the repo. 
 
+You should be able to [watch the sketch](http://sirhamy.com/#/obeythegum) live on my website.
+
 ## To run
 
 If you have the P5 IDE downloaded, you can just open the project and run it (provided you supply images for the code to pull in).
