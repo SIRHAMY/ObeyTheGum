@@ -1,8 +1,22 @@
 # ObeyTheGum
 
-Code for a P5.js sketch I'm making. Images aren't mine, so I didn't include them in the repo. 
+Code for a P5.js sketch I'm making. Images aren't mine, so don't sue me pls.
 
 You should be able to [watch the sketch](http://sirhamy.com/#/obeythegum) live on my website.
+
+## License
+
+#### Images
+
+I don't own the images, so I can't really give them to you. Do with them as you will.
+
+#### Sketch
+
+As for everything else, I'm sharing with Creative Commons Attribution-ShareAlike 4.0 International License. Basically you can use and modify my work for free provided that you offer appropriate attribution. 
+
+Proper attribution for me is using my logo in something like "original by *logo*" or linking to my website at sirhamy.com or linking to this repo. Doesn't really matter how you do it so long as people can see I created the original and they have an easy way to check out my grandeur.
+
+TL;DR Don't be an ass and tell people you made what I made. k thx bye.
 
 ## To run
 
