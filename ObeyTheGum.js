@@ -72,9 +72,19 @@ function draw() {
     }
     */
   } else if(gumType == 1) {
-    drawSpiral(counter, duration);
+    if(counter <= 2 * duration) {
+      //Takes 3 durations to get to proper place
+      drawSpiral(counter, duration);
+    } else if(counter < 4 * duration) {
+      colorSpiral(counter - 2*duration, duration);
+    } else if(counter< 6 * duration) {
+      enlargeSpiral(counter - 4*duration, duration);
+    } else if(counter < 8 * duration) {
+      freezeSpiral(counter - 6*duration, duration);
+      //despiral(counter, duration, 3*duration);
+    }
     
-    if(counter == 3 * duration) {
+    if(counter == 8 * duration) {
       gumType = 0;
       counter = 1;
     }
@@ -204,7 +214,132 @@ var drawSpiral = function(counter, duration) {
   }
 }
 
+//**Color Spiral**
+
+var colorSpiral = function(counter, duration) {
+  var maxCirRadius = logo.height;
+  
+  var radius = 0;
+  var radiusInc = maxCirRadius / duration;
+  
+  var theta = 0.0;
+  var thetaInc = (3.84 * PI ) / duration;
+  
+  var color = (counter % 2 == 0);
+  
+  for(var i = 0; i<2*duration; i++) {
+    if(i > 2*duration - counter) {
+      if(color) fill('#ef4222');
+      else fill('#ffffff');
+      color = !color;
+    }
+    
+    var x = cos(theta) * radius + windowWidth/2;
+    var y = sin(theta) * radius + windowHeight/2;
+    ellipse(x, y, 50, 50);
+    theta += thetaInc;
+    radius += radiusInc;
+  }
+}
+
+//**Enlarge Spiral Code**
+//Incrementally increases size of ellipses, starting at outside
+
+var enlargeSpiral = function(counter, duration) {
+  var maxCirRadius = logo.height;
+  
+  var radius = 0;
+  var radiusInc = maxCirRadius / duration;
+  
+  var theta = 0.0;
+  var thetaInc = (3.84 * PI ) / duration;
+  
+  var diameterInc = 2;
+  
+  var color = false;
+  
+  for(var i = 0; i<2*duration; i++) {
+    
+    if(color) fill('#ef4222');
+    else fill('#ffffff');
+    color = !color;
+    
+    var x = cos(theta) * radius + windowWidth/2;
+    var y = sin(theta) * radius + windowHeight/2;
+    
+    if(i > 2*duration - counter) {
+      ellipse(x, y, 50 + diameterInc, 50 + diameterInc);
+      diameterInc += 2;
+    } else {
+      ellipse(x, y, 50, 50);
+    }
+    
+    theta += thetaInc;
+    radius += radiusInc;
+  }
+}
+
+//**Freeze Spiral**
+//Freeze the big old spiral
+var freezeSpiral = function(counter, duration) {
+  var maxCirRadius = logo.height;
+  
+  var radius = 0;
+  var radiusInc = maxCirRadius / duration;
+  
+  var thetaInc = (3.84 * PI ) / duration;
+  var theta = (thetaInc * counter) / 4;
+  
+  var diameterInc = 2;
+  
+  var color = false;
+  
+  for(var i = 0; i<2*duration; i++) {
+    
+    if(color) fill('#ef4222');
+    else fill('#ffffff');
+    color = !color;
+    
+    var x = cos(theta) * radius + windowWidth/2;
+    var y = sin(theta) * radius + windowHeight/2;
+    
+
+    ellipse(x, y, 50 + diameterInc, 50 + diameterInc);
+    diameterInc += 2;
+
+    
+    theta += thetaInc;
+    radius += radiusInc;
+  }
+}
+
 //**Despiral Code**
+/**
+ * Counter - maxDuration - currentspot
+ * 
+ * */
+var despiral = function(counter, duration, maxDuration) {
+  
+}
+
+//**Flower Spiral**
+var flowerSpiral = function(counter, duration) {
+  var maxCirRadius = logo.height;
+  
+  var radius = 0;
+  var radiusInc = maxCirRadius / duration;
+  
+  var theta = 0.0;
+  var thetaInc = (3.84 * PI ) / duration;
+  
+  for(var i = 0; i<counter; i++) {
+    var x = cos(theta) * radius + windowWidth/2;
+    var y = sin(theta) * radius + windowHeight/2;
+    ellipse(x, y, 50, 50);
+    theta += thetaInc;
+    radius += radiusInc;
+  }
+}
 
 //**Helper Code**
 
